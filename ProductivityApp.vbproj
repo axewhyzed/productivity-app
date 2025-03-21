@@ -140,7 +140,11 @@
     <Content Include="Pages\About.aspx" />
     <Content Include="Pages\Contact.aspx" />
     <Content Include="Content\css\bootstrap.min.css" />
-    <Content Include="Content\css\Site.css" />
+    <Content Include="Content\css\app.css" />
+    <Content Include="Content\fonts\Inter-bold.woff" />
+    <Content Include="Content\fonts\Inter-bold.woff2" />
+    <Content Include="Content\fonts\Inter-regular.woff" />
+    <Content Include="Content\fonts\Inter-regular.woff2" />
     <Content Include="Pages\Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />

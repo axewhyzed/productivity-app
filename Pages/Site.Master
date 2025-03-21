@@ -1,21 +1,20 @@
 ﻿<%@ Master Language="VB" AutoEventWireup="true" CodeBehind="Site.master.vb" Inherits="ProductivityApp.SiteMaster" %>
 
 <!DOCTYPE html>
-
 <html lang="en">
 <head runat="server">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%: Page.Title %> - My ASP.NET Application</title>
+    <title><%: Page.Title %> - Flowcus</title>
 
-    <asp:PlaceHolder runat="server">
-        <%--<%: Scripts.Render("~/bundles/modernizr") %>--%>
-    </asp:PlaceHolder>
-
+    <!-- Styles -->
     <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link href="~/Content/css/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/css/app.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/all.min.js" integrity="sha512-b+nQTCdtTBIRIbraqNEwsjB6UvL3UEMkXnhzd8awtCYh0Kcsjl9uEgwVFVbhoj3uu1DO1ZMacNvLoyJJiNfcvg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-        <!-- Include JavaScript -->
+
+    <!-- Scripts -->
     <script src="~/Scripts/jquery-3.7.0.min.js"></script>
     <script src="~/Scripts/bootstrap.bundle.min.js"></script>
 </head>
@@ -23,40 +22,134 @@
     <form runat="server">
         <asp:ScriptManager runat="server">
             <Scripts>
-                <%--To learn more about bundling scripts in ScriptManager see https://go.microsoft.com/fwlink/?LinkID=301884 --%>
-                <%--Framework Scripts--%>
                 <asp:ScriptReference Name="WebFormsBundle" />
-                <%--Site Scripts--%>
             </Scripts>
         </asp:ScriptManager>
 
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
-            <div class="container">
-                <a class="navbar-brand" runat="server" href="~/">Application name</a>
-                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
+        <!-- Top Navigation Bar -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <div class="container-fluid">
+                <a class="navbar-brand" runat="server" href="~/">Flowcus</a>
+                <!-- Sidebar Toggle Button for Mobile -->
+                <button id="sidebarToggle" class="btn btn-outline-light d-md-none me-2" type="button">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#topNavBar" aria-controls="topNavBar" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/Pages/About">About</a></li>
+                <div class="collapse navbar-collapse" id="topNavBar">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/">Dashboard</a></li>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/Pages/Tasks">Tasks</a></li>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/Pages/Calendar">Calendar</a></li>
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/Pages/Contact">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/Pages/About">About</a></li>
+                    </ul>
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" runat="server" href="~/Pages/Notifications" data-bs-toggle="tooltip" title="Notifications">
+                                <i class="fa fa-bell"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" runat="server" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" title="Profile">
+                                <i class="fa fa-user"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
+                                <li><a class="dropdown-item" href="~/Pages/Profile">View Profile</a></li>
+                                <li><a class="dropdown-item" href="~/Pages/Settings">Settings</a></li>
+                                <li>
+                                    <hr class="dropdown-divider" />
+                                </li>
+                                <li><a class="dropdown-item" href="~/Account/Logout">Logout</a></li>
+                            </ul>
+                        </li>
                     </ul>
                 </div>
             </div>
         </nav>
-        <div class="container body-content">
-            <asp:ContentPlaceHolder ID="MainContent" runat="server">
-            </asp:ContentPlaceHolder>
-            <hr />
-            <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - My ASP.NET Application</p>
-            </footer>
+
+        <!-- Page Layout: Sidebar & Main Content -->
+        <div class="container-fluid">
+            <div class="row">
+                <!-- Sidebar -->
+                <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+                    <div class="position-sticky pt-3 text-center">
+                        <ul class="sidebar-menu">
+                            <li>
+                                <a class="sidebar-btn active" runat="server" href="~/"
+                                    data-bs-toggle="tooltip" data-bs-placement="right" title="Home">
+                                    <i class="fa fa-home"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="sidebar-btn" runat="server" href="~/Pages/Tasks"
+                                    data-bs-toggle="tooltip" data-bs-placement="right" title="Tasks">
+                                    <i class="fa fa-tasks"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="sidebar-btn" runat="server" href="~/Pages/Calendar"
+                                    data-bs-toggle="tooltip" data-bs-placement="right" title="Calendar">
+                                    <i class="fa fa-calendar"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="sidebar-btn" runat="server" href="~/Pages/Projects"
+                                    data-bs-toggle="tooltip" data-bs-placement="right" title="Projects">
+                                    <i class="fa fa-folder-open"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="sidebar-btn" runat="server" href="~/Pages/Notes"
+                                    data-bs-toggle="tooltip" data-bs-placement="right" title="Notes">
+                                    <i class="fa fa-sticky-note"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="sidebar-btn" runat="server" href="~/Pages/Reports"
+                                    data-bs-toggle="tooltip" data-bs-placement="right" title="Reports">
+                                    <i class="fa fa-chart-bar"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="sidebar-btn" runat="server" href="~/Pages/Settings"
+                                    data-bs-toggle="tooltip" data-bs-placement="right" title="Settings">
+                                    <i class="fa fa-cog"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+
+
+
+                <!-- Main Content Area -->
+                <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                    <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
+                </main>
+            </div>
         </div>
+
+        <!-- Footer -->
+        <footer class="footer mt-auto py-3 bg-light">
+            <div class="container text-center">
+                <span class="text-muted">&copy; <%: DateTime.Now.Year %> - Mihir Bambhaniya. All rights reserved.</span>
+            </div>
+        </footer>
     </form>
-    <asp:PlaceHolder runat="server">
-        <%: Scripts.Render("~/Scripts/bootstrap.min.js") %>
-    </asp:PlaceHolder>
+
+    <!-- jQuery for interactivity -->
+    <script>
+        $(document).ready(function () {
+            // Activate Bootstrap tooltips
+            $('[data-bs-toggle="tooltip"]').tooltip();
+
+            // Toggle sidebar for mobile
+            $('#sidebarToggle').on('click', function () {
+                $('#sidebarMenu').toggleClass('d-none');
+            });
+        });
+    </script>
 </body>
 </html>
