@@ -15,8 +15,8 @@
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 
     <!-- Scripts -->
-    <script src="~/Scripts/jquery-3.7.0.min.js"></script>
-    <script src="~/Scripts/bootstrap.bundle.min.js"></script>
+    <script src="~/Scripts/jquery-3.7.0.min.js" type="text/javascript"></script>
+    <script src="~/Scripts/bootstrap.bundle.min.js" type="text/javascript"></script>
 </head>
 <body>
     <form runat="server">
@@ -26,128 +26,49 @@
             </Scripts>
         </asp:ScriptManager>
 
-        <!-- Top Navigation Bar -->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-            <div class="container-fluid">
-                <a class="navbar-brand" runat="server" href="~/">Flowcus</a>
-                <!-- Sidebar Toggle Button for Mobile -->
-                <button id="sidebarToggle" class="btn btn-outline-light d-md-none me-2" type="button">
-                    <i class="fa fa-bars"></i>
-                </button>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#topNavBar" aria-controls="topNavBar" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="topNavBar">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/">Dashboard</a></li>
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/Pages/Tasks">Tasks</a></li>
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/Pages/Calendar">Calendar</a></li>
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/Pages/Contact">Contact</a></li>
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/Pages/About">About</a></li>
-                    </ul>
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link" runat="server" href="~/Pages/Notifications" data-bs-toggle="tooltip" title="Notifications">
-                                <i class="fa fa-bell"></i>
-                            </a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" runat="server" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" title="Profile">
-                                <i class="fa fa-user"></i>
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
-                                <li><a class="dropdown-item" href="~/Pages/Profile">View Profile</a></li>
-                                <li><a class="dropdown-item" href="~/Pages/Settings">Settings</a></li>
-                                <li>
-                                    <hr class="dropdown-divider" />
-                                </li>
-                                <li><a class="dropdown-item" href="~/Account/Logout">Logout</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+        <div class="wrapper">
+            <!-- Sidebar -->
+            <nav id="sidebarMenu" class="sidebar">
+                <ul class="sidebar-menu">
+                    <li><a class="sidebar-btn active" runat="server" href="~/" title="Home"><i class="fa fa-home"></i></a></li>
+                    <li><a class="sidebar-btn" runat="server" href="~/Pages/Tasks" title="Tasks"><i class="fa fa-tasks"></i></a></li>
+                    <li><a class="sidebar-btn" runat="server" href="~/Pages/Calendar" title="Calendar"><i class="fa fa-calendar"></i></a></li>
+                    <li><a class="sidebar-btn" runat="server" href="~/Pages/Projects" title="Projects"><i class="fa fa-folder-open"></i></a></li>
+                    <li><a class="sidebar-btn" runat="server" href="~/Pages/Notes" title="Notes"><i class="fa fa-sticky-note"></i></a></li>
+                    <li><a class="sidebar-btn" runat="server" href="~/Pages/Contact" title="Contact"><i class="fa-solid fa-phone"></i></a></li>
+                    <li><a class="sidebar-btn" runat="server" href="~/Pages/About" title="About"><i class="fa-solid fa-id-badge"></i></a></li>
+                </ul>
+            </nav>
 
-        <!-- Page Layout: Sidebar & Main Content -->
-        <div class="container-fluid">
-            <div class="row">
-                <!-- Sidebar -->
-                <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-                    <div class="position-sticky pt-3 text-center">
-                        <ul class="sidebar-menu">
-                            <li>
-                                <a class="sidebar-btn active" runat="server" href="~/"
-                                    data-bs-toggle="tooltip" data-bs-placement="right" title="Home">
-                                    <i class="fa fa-home"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="sidebar-btn" runat="server" href="~/Pages/Tasks"
-                                    data-bs-toggle="tooltip" data-bs-placement="right" title="Tasks">
-                                    <i class="fa fa-tasks"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="sidebar-btn" runat="server" href="~/Pages/Calendar"
-                                    data-bs-toggle="tooltip" data-bs-placement="right" title="Calendar">
-                                    <i class="fa fa-calendar"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="sidebar-btn" runat="server" href="~/Pages/Projects"
-                                    data-bs-toggle="tooltip" data-bs-placement="right" title="Projects">
-                                    <i class="fa fa-folder-open"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="sidebar-btn" runat="server" href="~/Pages/Notes"
-                                    data-bs-toggle="tooltip" data-bs-placement="right" title="Notes">
-                                    <i class="fa fa-sticky-note"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="sidebar-btn" runat="server" href="~/Pages/Reports"
-                                    data-bs-toggle="tooltip" data-bs-placement="right" title="Reports">
-                                    <i class="fa fa-chart-bar"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="sidebar-btn" runat="server" href="~/Pages/Settings"
-                                    data-bs-toggle="tooltip" data-bs-placement="right" title="Settings">
-                                    <i class="fa fa-cog"></i>
-                                </a>
-                            </li>
-                        </ul>
+            <!-- Main Content Area -->
+            <div class="content-wrapper">
+                <!-- Header -->
+                <header class="header">
+                    <div class="header-content">
+                        <a class="navbar-brand" runat="server" href="~/">Flowcus</a>
+                        <button id="sidebarToggle" class="btn btn-outline-light d-md-none">
+                            <i class="fa fa-bars"></i>
+                        </button>
                     </div>
-                </nav>
+                </header>
 
-
-
-                <!-- Main Content Area -->
-                <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <main class="main-content">
                     <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
                 </main>
+
+                <!-- Footer -->
+                <footer class="footer">
+                    <span>&copy; <%: DateTime.Now.Year %> - Mihir Bambhaniya. All rights reserved.</span>
+                </footer>
             </div>
         </div>
-
-        <!-- Footer -->
-        <footer class="footer mt-auto py-3 bg-light">
-            <div class="container text-center">
-                <span class="text-muted">&copy; <%: DateTime.Now.Year %> - Mihir Bambhaniya. All rights reserved.</span>
-            </div>
-        </footer>
     </form>
 
-    <!-- jQuery for interactivity -->
     <script>
         $(document).ready(function () {
-            // Activate Bootstrap tooltips
-            $('[data-bs-toggle="tooltip"]').tooltip();
-
-            // Toggle sidebar for mobile
             $('#sidebarToggle').on('click', function () {
-                $('#sidebarMenu').toggleClass('d-none');
+                $('#sidebarMenu').toggleClass('collapsed');
+                $('.content-wrapper').toggleClass('expanded');
             });
         });
     </script>

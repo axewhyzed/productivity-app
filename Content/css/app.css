@@ -14,109 +14,140 @@
     font-display: swap;
 }
 
-/* Wrapping element */
-/* Set some basic padding to keep content from hitting the edges */
-/* Center content properly */
-.body-content {
-    margin: 20px auto;
-    padding: 20px;
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+/* Global Styles */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif; /* Ensure Inter is applied globally */
+    background-color: #fdfdfd; /* Light background */
+    color: #333; /* Dark gray for better readability */
+    display: flex;
+    flex-direction: column;
 }
 
-/* Set widths on the form inputs since otherwise they're 100% wide */
-/* Forms */
-input,
-select,
-textarea {
-    max-width: 100%;
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-}
-
-    input:focus,
-    select:focus,
-    textarea:focus {
-        border-color: #007bff;
-        outline: none;
-    }
-
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-    .body-content {
-        padding: 10px;
-    }
-}
-
-body {
-    font-family: 'Inter', sans-serif;
-    line-height: 1.6;
-    background-color: #f8f9fa;
-    color: #333;
-}
-
-
-/* Headings */
-h1, h2, h3 {
-    font-family: 'Inter', sans-serif;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
-/* Buttons */
-button, .btn {
-    padding: 10px 20px;
-    background: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-    button:hover, .btn:hover {
-        background: #0056b3;
-    }
-
-.sidebar-btn {
-    display: inline-block;
-    padding: 0.5rem 1rem;
-    margin: 0.25rem;
-    text-align: center;
-    color: #495057;
-    border-radius: 4px;
-    transition: background-color 0.2s;
-}
-
-    .sidebar-btn:hover,
-    .sidebar-btn:focus {
-        background-color: #e9ecef;
-        text-decoration: none;
-    }
-
-/* Make the sidebar fill the viewport height */
-.sidebar {
+/* Wrapper */
+.wrapper {
+    display: flex;
     height: 100vh;
-    overflow-y: auto; /* In case the content exceeds the viewport */
+    overflow: hidden;
 }
 
-/* Reset the list styling for sidebar menu */
+/* Updated Sidebar */
+.sidebar {
+    width: 5rem;
+    background-color: #ffffff; /* White background */
+    color: #333; /* Dark text for readability */
+    transition: width 0.3s ease-in-out;
+    height: 100vh;
+    padding: 0;
+    border-right: 1px solid #ddd; /* Light gray border for subtle separation */
+}
+
+    .sidebar.collapsed {
+        width: 70px;
+    }
+
+/* Sidebar Menu */
 .sidebar-menu {
     list-style: none;
     padding: 0;
     margin: 0;
-    height: 100%;
-    width: 5rem;
+    height: inherit;
+    width: inherit;
 }
 
-    /* Display li items without extra width */
     .sidebar-menu li {
-        margin: 0;
-        padding: 0;
-        display: block;
-        width: 5rem;    
+        text-align: center;
     }
+
+        /* Sidebar Buttons */
+        .sidebar-menu li a {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            color: #444;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+
+            .sidebar-menu li a:hover {
+                background: #f0f0f0; /* Soft hover effect */
+                border-radius: 6px;
+            }
+
+/* Content Wrapper */
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    height: 100vh;
+    transition: margin-left 0.3s ease-in-out;
+    background: #ffffff; /* Ensure it blends well */
+}
+
+    .content-wrapper.expanded {
+        margin-left: 70px;
+    }
+
+/* Header */
+.header {
+    background-color: #ffffff; /* Keep it light */
+    color: #333;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid #ddd; /* Subtle separation */
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    position: relative;
+}
+
+/* Main Content */
+.main-content {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto;
+    background: #ffffff;
+}
+
+/* Footer */
+.footer {
+    background-color: #ffffff; /* Matches header & sidebar */
+    color: #666;
+    padding: 10px;
+    text-align: center;
+    font-size: 0.9rem;
+    border-top: 1px solid #ddd;
+    margin-top: auto;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+    .sidebar {
+        height: 100vh;
+        z-index: 1000;
+    }
+
+        .sidebar.collapsed {
+            width: 0;
+            overflow: hidden;
+        }
+
+    .content-wrapper {
+        margin-left: 0;
+    }
+
+        .content-wrapper.expanded {
+            margin-left: 0;
+        }
+}
+
