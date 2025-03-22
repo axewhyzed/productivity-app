@@ -137,42 +137,80 @@
     <Import Include="System.Web.UI.HtmlControls" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Pages\About.aspx" />
-    <Content Include="Pages\Contact.aspx" />
+    <Content Include="Pages\wfAbout.aspx" />
+    <Content Include="Pages\wfCalender.aspx" />
+    <Content Include="Pages\wfContact.aspx" />
     <Content Include="Content\css\bootstrap.min.css" />
-    <Content Include="Content\css\Site.css" />
-    <Content Include="Pages\Default.aspx" />
+    <Content Include="Content\css\app.css" />
+    <Content Include="Content\fonts\Inter-bold.woff" />
+    <Content Include="Content\fonts\Inter-bold.woff2" />
+    <Content Include="Content\fonts\Inter-regular.woff" />
+    <Content Include="Content\fonts\Inter-regular.woff2" />
+    <Content Include="Pages\wfHome.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Pages\wfLogin.aspx" />
+    <Content Include="Pages\wfNotes.aspx" />
+    <Content Include="Pages\wfProjects.aspx" />
+    <Content Include="Pages\wfTasks.aspx" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\jquery-3.7.0.min.js" />
+    <Content Include="Scripts\WebForms\DetailsView.js" />
+    <Content Include="Scripts\WebForms\Focus.js" />
+    <Content Include="Scripts\WebForms\GridView.js" />
+    <Content Include="Scripts\WebForms\Menu.js" />
+    <Content Include="Scripts\WebForms\MenuStandards.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjax.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxApplicationServices.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxComponentModel.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxCore.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxGlobalization.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxHistory.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxNetwork.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxSerialization.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxTimer.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxWebForms.js" />
+    <Content Include="Scripts\WebForms\MSAjax\MicrosoftAjaxWebServices.js" />
+    <Content Include="Scripts\WebForms\SmartNav.js" />
+    <Content Include="Scripts\WebForms\TreeView.js" />
+    <Content Include="Scripts\WebForms\WebForms.js" />
+    <Content Include="Scripts\WebForms\WebParts.js" />
+    <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.vb" />
+    <Compile Include="App_Start\DBHelper.vb" />
     <Compile Include="App_Start\RouteConfig.vb" />
-    <Compile Include="Pages\About.aspx.designer.vb">
-      <DependentUpon>About.aspx</DependentUpon>
+    <Compile Include="Pages\wfAbout.aspx.designer.vb">
+      <DependentUpon>wfAbout.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Pages\About.aspx.vb">
-      <DependentUpon>About.aspx</DependentUpon>
+    <Compile Include="Pages\wfAbout.aspx.vb">
+      <DependentUpon>wfAbout.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="App_Start\WebApiConfig.vb" />
-    <Compile Include="Pages\Contact.aspx.designer.vb">
-      <DependentUpon>Contact.aspx</DependentUpon>
+    <Compile Include="Pages\wfCalender.aspx.designer.vb">
+      <DependentUpon>wfCalender.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Contact.aspx.vb">
-      <DependentUpon>Contact.aspx</DependentUpon>
+    <Compile Include="Pages\wfCalender.aspx.vb">
+      <DependentUpon>wfCalender.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
-    <Compile Include="Pages\Default.aspx.vb">
-      <SubType>ASPXCodeBehind</SubType>
-      <DependentUpon>Default.aspx</DependentUpon>
+    <Compile Include="Pages\wfContact.aspx.designer.vb">
+      <DependentUpon>wfContact.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Default.aspx.designer.vb">
-      <DependentUpon>Default.aspx</DependentUpon>
+    <Compile Include="Pages\wfContact.aspx.vb">
+      <DependentUpon>wfContact.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Pages\wfHome.aspx.vb">
+      <SubType>ASPXCodeBehind</SubType>
+      <DependentUpon>wfHome.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\wfHome.aspx.designer.vb">
+      <DependentUpon>wfHome.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.vb">
       <DependentUpon>Global.asax</DependentUpon>
@@ -196,12 +234,40 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Pages\Site.Master.designer.vb">
-      <DependentUpon>Site.Master</DependentUpon>
+    <Compile Include="Pages\wfLogin.aspx.designer.vb">
+      <DependentUpon>wfLogin.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Site.Master.vb">
-      <DependentUpon>Site.Master</DependentUpon>
+    <Compile Include="Pages\wfLogin.aspx.vb">
+      <DependentUpon>wfLogin.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Pages\wfNotes.aspx.designer.vb">
+      <DependentUpon>wfNotes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\wfNotes.aspx.vb">
+      <DependentUpon>wfNotes.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Pages\wfProjects.aspx.designer.vb">
+      <DependentUpon>wfProjects.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\wfProjects.aspx.vb">
+      <DependentUpon>wfProjects.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Pages\MasterLayout.Master.designer.vb">
+      <DependentUpon>MasterLayout.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\MasterLayout.Master.vb">
+      <DependentUpon>MasterLayout.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\wfTasks.aspx.designer.vb">
+      <DependentUpon>wfTasks.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\wfTasks.aspx.vb">
+      <DependentUpon>wfTasks.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Pages\ViewSwitcher.ascx.vb">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
@@ -224,12 +290,13 @@
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
     </None>
+    <None Include="My Project\PublishProfiles\Flowcus - Web Deploy.pubxml" />
     <None Include="My Project\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
-    <Content Include="Pages\Site.Master" />
+    <Content Include="Pages\MasterLayout.Master" />
     <Content Include="Pages\ViewSwitcher.ascx" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
