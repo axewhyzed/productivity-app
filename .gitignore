@@ -362,6 +362,6 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 
-# Publish profile
+# Publish profile and pipeline
 profile.arm.json
 azure-pipelines.yaml
