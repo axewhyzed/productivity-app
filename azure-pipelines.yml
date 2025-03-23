@@ -1,4 +1,4 @@
-# ASP.NET
+# ASP.NET    
 # Build and test ASP.NET projects.
 # Add steps that publish symbols, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/apps/aspnet/build-aspnet-4
@@ -39,7 +39,8 @@ steps:
 # Step 5: Publish the app to Azure App Service
 - task: AzureWebApp@1
   inputs:
-    azureSubscription: $(azureSubscription)  # Name of the Azure service connection
-    appName: $(appName)  # Azure App Service name
-    package: $(packageLocation)  # Path to the packaged app
-    appType: 'webApp'  # The app type (webApp for Azure Web App Service)
+    azureSubscription: 'Azure subscription 1(7d56fe05-341d-484f-97b2-2229aa4ae9a3)'
+    appType: 'webApp'
+    appName: 'Flowcus'
+    package: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    deploymentMethod: 'auto'
