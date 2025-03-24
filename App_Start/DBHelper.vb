@@ -10,7 +10,9 @@ Public Module DBHelper
     ' Static Constructor to Set Connection String
     Sub New()
         ' Read Encrypted Connection String from Web.config
-        Dim encryptedConnString As String = ConfigurationManager.AppSettings("DBConnectionString")
+        'Dim encryptedConnString As String = ConfigurationManager.AppSettings("DBConnectionString")
+        Dim isProduction As Boolean = Boolean.Parse(ConfigurationManager.AppSettings("IsProduction"))
+        Dim encryptedConnString As String = If(isProduction, ConfigurationManager.AppSettings("DBConnectionProd"), ConfigurationManager.AppSettings("DBConnectionString"))
         ' Read Decryption Key from Environment Variable
         Dim encryptionKey As String = Environment.GetEnvironmentVariable("ENCRYPTION_KEY")
 
