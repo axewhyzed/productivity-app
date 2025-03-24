@@ -6,12 +6,15 @@ Imports System.Configuration ' For Web.config access
 
 Public Module DBHelper
     Private ReadOnly connectionString As String
-
+    Private ReadOnly Property IsProduction As Boolean
+        Get
+            Return Not HttpContext.Current.Request.Url.Host.ToLower().Contains("localhost")
+        End Get
+    End Property
     ' Static Constructor to Set Connection String
     Sub New()
         ' Read Encrypted Connection String from Web.config
         'Dim encryptedConnString As String = ConfigurationManager.AppSettings("DBConnectionString")
-        Dim isProduction As Boolean = Boolean.Parse(ConfigurationManager.AppSettings("IsProduction"))
         Dim encryptedConnString As String = If(isProduction, ConfigurationManager.AppSettings("DBConnectionProd"), ConfigurationManager.AppSettings("DBConnectionString"))
         ' Read Decryption Key from Environment Variable
         Dim encryptionKey As String = Environment.GetEnvironmentVariable("ENCRYPTION_KEY")
