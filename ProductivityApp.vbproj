@@ -180,6 +180,9 @@
     <Content Include="Bundle.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Code\BasePage.vb">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.vb" />
     <Compile Include="App_Start\DBHelper.vb" />
     <Compile Include="App_Start\RouteConfig.vb" />

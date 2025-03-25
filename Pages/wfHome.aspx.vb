@@ -1,13 +1,11 @@
 ﻿Public Class Home
-    Inherits Page
+    Inherits BasePage
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
         Try
-            If Session("currentUser") Is Nothing Then
-                Response.Redirect("~/Pages/wfLogin") ' Redirect if not logged in
-            End If
+
         Catch ex As Exception
-            Console.Write(ex)
+            Console.WriteLine(ex)
         End Try
     End Sub
 End Class
