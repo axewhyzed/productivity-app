@@ -42,5 +42,5 @@ steps:
     azureSubscription: 'Azure subscription 1(7d56fe05-341d-484f-97b2-2229aa4ae9a3)'
     appType: 'webApp'
     appName: 'Flowcus'
-    package: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    package: '$(Build.SourcesDirectory)'  # Deploy everything from repo
     deploymentMethod: 'auto'
