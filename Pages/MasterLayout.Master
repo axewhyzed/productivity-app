@@ -91,7 +91,11 @@
                     </div>
                 </header>
 
-                <main class="main-content">
+                <div class="master-header">
+                    <asp:ContentPlaceHolder ID="HeaderContent" runat="server"></asp:ContentPlaceHolder>
+                </div>
+
+                <main class="master-content">
                     <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
                 </main>
 
